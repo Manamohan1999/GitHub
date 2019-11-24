@@ -20,12 +20,13 @@ public class Longest_Cosecutive_Sequence {
 
 	private static int Find_Longest_Cosecutive(int[] A) {
 		Arrays.sort(A);
-		int count=0;
+		int count=1;
 		int longest_Sequence=0;
 		for (int i = 0; i < A.length-1; i++) {
-			count=0;
-			while(A[i]+1==A[i+1]) {
-				count++;
+			count=1;
+			for (int j = i; j < A.length-1; j++) {
+				if(A[j]+1==A[j+1])
+					count++;
 			}
 			if(count>longest_Sequence) {
 				longest_Sequence=count;
