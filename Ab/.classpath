@@ -6,7 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="Resources/rs2xml.jar"/>
-	<classpathentry kind="lib" path="Resources/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Manamohan Samal/Downloads/ojdbc6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
