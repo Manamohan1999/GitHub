@@ -110,6 +110,8 @@ public class UserLogin extends JFrame {
 							UserFunction userfunction=new UserFunction();
 							userfunction.setVisible(true);
 							userfunction.setLocationRelativeTo(null);
+							userfunction.username=rs.getString(2);
+							userfunction.regd=rs.getString(3);
 							continue;
 						}
 					}

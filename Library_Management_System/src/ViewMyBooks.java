@@ -7,16 +7,16 @@ import javax.swing.border.EmptyBorder;
 
 import net.proteanit.sql.DbUtils;
 
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.sql.*;
 import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.*;
 
-public class Users extends JFrame {
+public class ViewMyBooks extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -30,7 +30,7 @@ public class Users extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Users frame = new Users();
+					ViewMyBooks frame = new ViewMyBooks();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,43 +42,42 @@ public class Users extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Users() {
-		
-		setTitle("User Details");
+	public ViewMyBooks() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 630, 379);
+		setBounds(100, 100, 615, 371);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("My Books :");
+		lblNewLabel.setFont(new Font("Consolas", Font.BOLD, 15));
+		lblNewLabel.setBounds(20, 11, 97, 19);
+		contentPane.add(lblNewLabel);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 43, 594, 251);
+		scrollPane.setBounds(10, 43, 579, 225);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JLabel lblNewLabel = new JLabel("User Details:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel.setBounds(10, 11, 119, 14);
-		contentPane.add(lblNewLabel);
 		try {
 			Connection con=DBConnection.connect();
 			Statement smt=con.createStatement();
-			ResultSet rs=smt.executeQuery("select * from userlogin");
+			ResultSet rs=smt.executeQuery("select * from "+UserFunction.username);
 			table.setModel(DbUtils.resultSetToTableModel(rs));
 			
 			btnNewButton = new JButton("Back");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
-					AdminFunction back=new AdminFunction();
+					UserFunction back=new UserFunction();
 					back.setVisible(true);
 					back.setLocationRelativeTo(null);
 				}
 			});
-			btnNewButton.setBounds(334, 305, 130, 23);
+			btnNewButton.setBounds(371, 298, 89, 23);
 			contentPane.add(btnNewButton);
 			
 			btnNewButton_1 = new JButton("Exit");
@@ -87,12 +86,10 @@ public class Users extends JFrame {
 					dispose();
 				}
 			});
-			btnNewButton_1.setBounds(474, 305, 130, 23);
+			btnNewButton_1.setBounds(477, 298, 89, 23);
 			contentPane.add(btnNewButton_1);
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 	}
-
 }

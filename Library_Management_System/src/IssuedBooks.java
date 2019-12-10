@@ -7,16 +7,16 @@ import javax.swing.border.EmptyBorder;
 
 import net.proteanit.sql.DbUtils;
 
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 import java.sql.*;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Users extends JFrame {
+public class IssuedBooks extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -30,7 +30,7 @@ public class Users extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Users frame = new Users();
+					IssuedBooks frame = new IssuedBooks();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,31 +42,30 @@ public class Users extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Users() {
-		
-		setTitle("User Details");
+	public IssuedBooks() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 630, 379);
+		setBounds(100, 100, 741, 406);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("Issued Books Detail  :");
+		lblNewLabel.setFont(new Font("Lucida Fax", Font.PLAIN, 14));
+		lblNewLabel.setBounds(10, 11, 164, 22);
+		contentPane.add(lblNewLabel);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 43, 594, 251);
+		scrollPane.setBounds(20, 45, 683, 278);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JLabel lblNewLabel = new JLabel("User Details:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel.setBounds(10, 11, 119, 14);
-		contentPane.add(lblNewLabel);
 		try {
 			Connection con=DBConnection.connect();
 			Statement smt=con.createStatement();
-			ResultSet rs=smt.executeQuery("select * from userlogin");
+			ResultSet rs=smt.executeQuery("select * from librarybooks where \"Status\" = 'issued'");
 			table.setModel(DbUtils.resultSetToTableModel(rs));
 			
 			btnNewButton = new JButton("Back");
@@ -78,7 +77,7 @@ public class Users extends JFrame {
 					back.setLocationRelativeTo(null);
 				}
 			});
-			btnNewButton.setBounds(334, 305, 130, 23);
+			btnNewButton.setBounds(495, 334, 89, 23);
 			contentPane.add(btnNewButton);
 			
 			btnNewButton_1 = new JButton("Exit");
@@ -87,12 +86,10 @@ public class Users extends JFrame {
 					dispose();
 				}
 			});
-			btnNewButton_1.setBounds(474, 305, 130, 23);
+			btnNewButton_1.setBounds(604, 334, 89, 23);
 			contentPane.add(btnNewButton_1);
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 	}
-
 }

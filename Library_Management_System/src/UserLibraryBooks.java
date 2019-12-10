@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import java.sql.*;
 
-public class LibraryBooks extends JFrame {
+public class UserLibraryBooks extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField branchField;
@@ -50,7 +50,7 @@ public class LibraryBooks extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LibraryBooks() {
+	public UserLibraryBooks() {
 		setTitle("Book Available");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 699, 377);
@@ -216,7 +216,7 @@ public class LibraryBooks extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				AdminFunction back=new AdminFunction();
+				UserFunction back=new UserFunction();
 				back.setVisible(true);
 				back.setLocationRelativeTo(null);
 			}

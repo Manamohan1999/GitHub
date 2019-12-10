@@ -72,6 +72,10 @@ public class AdminFunction extends JFrame {
 		JButton viewIssuedBooks = new JButton("View Issued Books");
 		viewIssuedBooks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				IssuedBooks issuedbooks=new IssuedBooks();
+				issuedbooks.setVisible(true);
+				issuedbooks.setLocationRelativeTo(null);
 			}
 		});
 		viewIssuedBooks.setBounds(272, 37, 129, 31);
@@ -80,6 +84,10 @@ public class AdminFunction extends JFrame {
 		JButton issueBook = new JButton("Issue Book");
 		issueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				IssueBook bookissue=new IssueBook();
+				bookissue.setVisible(true);
+				bookissue.setLocationRelativeTo(null);
 			}
 		});
 		issueBook.setBounds(411, 37, 132, 31);
@@ -100,6 +108,10 @@ public class AdminFunction extends JFrame {
 		JButton addBook = new JButton("Add Book");
 		addBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				AddBook newbook=new AddBook();
+				newbook.setVisible(true);
+				newbook.setLocationRelativeTo(null);
 			}
 		});
 		addBook.setBounds(141, 110, 121, 31);
@@ -108,14 +120,22 @@ public class AdminFunction extends JFrame {
 		JButton returnBook = new JButton("Return Book");
 		returnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ReturnBook returnbook=new ReturnBook();
+				returnbook.setVisible(true);
+				returnbook.setLocationRelativeTo(null);
 			}
 		});
 		returnBook.setBounds(272, 110, 129, 31);
 		contentPane.add(returnBook);
 		
-		JButton editUser = new JButton("Edit User");
+		JButton editUser = new JButton("Edit/Update");
 		editUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				EditUser edituser=new EditUser();
+				edituser.setVisible(true);
+				edituser.setLocationRelativeTo(null);
 			}
 		});
 		editUser.setBounds(411, 110, 132, 31);
